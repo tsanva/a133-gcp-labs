@@ -1,4 +1,5 @@
 require('@google-cloud/debug-agent').start()
+require('dotenv').config()
 
 const https = require("https");
 const fs = require("fs");
