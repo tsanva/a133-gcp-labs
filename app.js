@@ -1,5 +1,7 @@
 require('@google-cloud/debug-agent').start()
 
+const https = require("https");
+const fs = require("fs");
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -14,7 +16,19 @@ app.get("/", (req, res) => {
     res.send("Response Success!")
 })
 
-const PORT = process.env.PORT || 8000
-app.listen(PORT, () => {
-    console.log("Server is up and listening on " + PORT)
-})
+// const PORT = process.env.PORT || 8000
+// app.listen(PORT, () => {
+//     console.log("Server is up and listening on " + PORT)
+// })
+
+https
+  .createServer(
+    {
+      key: fs.readFileSync("./sslcert/key.key"),
+      cert: fs.readFileSync("./sslcert/cert.pem"),
+    },
+    app
+  )
+  .listen(443, () => {
+    console.log("running on port 443");
+  });
