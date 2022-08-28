@@ -35,7 +35,7 @@ $config['base_url'] = 'https://dicoding.vasant.xyz';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
